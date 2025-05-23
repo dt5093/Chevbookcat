@@ -1,7 +1,64 @@
 <!DOCTYPE html>
-<html>
-</body>
-</h1>hello world</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>School Textbooks Library</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 0 10px; }
+  h1 { text-align: center; }
+  #searchInput { width: 100%; padding: 10px; margin-bottom: 20px; font-size: 16px; }
+  .book { border-bottom: 1px solid #ddd; padding: 10px 0; }
+  .book-title { font-weight: bold; font-size: 18px; }
+  .book-subject { font-style: italic; color: #555; }
+  a { color: #1a73e8; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<h1>School Textbooks Library</h1>
+<input type="text" id="searchInput" placeholder="Search by title or subject..." />
+
+<div id="booksList">
+  <div class="book">
+    <div class="book-title">Biology 101</div>
+    <div class="book-subject">Science</div>
+    <a href="pdfs/biology101.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
+  </div>
+  <div class="book">
+    <div class="book-title">Algebra Basics</div>
+    <div class="book-subject">Math</div>
+    <a href="pdfs/algebra_basics.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
+  </div>
+  <div class="book">
+    <div class="book-title">World History</div>
+    <div class="book-subject">Social Studies</div>
+    <a href="pdfs/world_history.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
+  </div>
+  <!-- Add more books here -->
+</div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const booksList = document.getElementById('booksList');
+  const books = booksList.getElementsByClassName('book');
+
+  searchInput.addEventListener('keyup', function() {
+    const filter = searchInput.value.toLowerCase();
+
+    for (let i = 0; i < books.length; i++) {
+      const title = books[i].querySelector('.book-title').textContent.toLowerCase();
+      const subject = books[i].querySelector('.book-subject').textContent.toLowerCase();
+
+      if (title.includes(filter) || subject.includes(filter)) {
+        books[i].style.display = "";
+      } else {
+        books[i].style.display = "none";
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
